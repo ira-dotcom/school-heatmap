@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where the good schools are</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="panel">
+    <header>
+      <h1>Where the good schools are</h1>
+      <p class="sub">Every public school around the Bay, shaded by how many of its
+      students actually test proficient. Warm is higher.</p>
+    </header>
+
+    <div class="field">
+      <label for="search">Town or district</label>
+      <input id="search" type="search" placeholder="Berkeley, Palo Alto, Piedmont…" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <span class="label">Grade level</span>
+      <div class="chips" id="levels">
+        <button class="chip on" data-level="elementary">Elementary</button>
+        <button class="chip on" data-level="middle">Middle</button>
+        <button class="chip on" data-level="high">High</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="floor">Show schools at or above <b id="floorValue">0</b>% proficient</label>
+      <input id="floor" type="range" min="0" max="90" step="5" value="0">
+    </div>
+
+    <div class="field row">
+      <label class="check"><input type="checkbox" id="charter" checked> Include charters</label>
+      <label class="check"><input type="checkbox" id="pins"> Always show pins</label>
+    </div>
+
+    <div id="count" class="count"></div>
+
+    <div id="detail" class="detail hidden"></div>
+
+    <section class="board">
+      <h2>Districts in view</h2>
+      <p class="hint">Ranked by the average of their schools on screen. Pan the map to change it.</p>
+      <ol id="districts"></ol>
+    </section>
+
+    <footer>
+      <p id="provenance"></p>
+      <p class="warn">A test score is one thing about a school, and the thing most
+      correlated with the income of the families around it. Read it as a map of
+      where a district is resourced, not a verdict on any child or teacher.</p>
+    </footer>
+  </aside>
+
+  <main id="map"></main>
+</div>
+
+<div id="legend">
+  <span>less proficient</span>
+  <i class="ramp"></i>
+  <span>more</span>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
